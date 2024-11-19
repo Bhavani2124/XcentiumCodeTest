@@ -22,6 +22,6 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Image}/{action=Index}/{id?}");
+    pattern: "{controller=Scraper}/{action=Scraper}/{id?}");
 
 app.Run();
