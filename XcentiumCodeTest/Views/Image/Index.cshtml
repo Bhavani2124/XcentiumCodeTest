@@ -1,0 +1,130 @@
+﻿@{
+    ViewData["Title"] = "Web Scraper";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick-theme.css" />
+
+    <!-- jQuery (Required for Slick Carousel) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Slick Carousel JS -->
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel/slick/slick.min.js"></script>
+
+    <script src="c:\xcentiumcodetest\xcentiumcodetest\content\js\slick.min.js"></script>
+  
+
+ 
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .carousel img {
+            max-height: 200px;
+            margin: auto;
+        }
+
+        .carousel {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .chart-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .carousel img {
+            max-width: 100%;
+            max-height: 200px;
+            display: block;
+            margin: auto;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Web Scraper</h1>
+    <form id="scrapeForm">
+        <input type="text" id="targetUrl" placeholder="Enter URL" style="width: 300px;" required />
+        <button type="submit">Scrape</button>
+    </form>
+
+    <!-- Image carousel -->
+    <div id="carousel" class="carousel"></div>
+
+    <!-- Word frequency chart -->
+    <div class="chart-container">
+        <canvas id="wordChart"></canvas>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#scrapeForm").on("submit", function (e) {
+                e.preventDefault();
+                const url = $("#targetUrl").val();
+
+                // Call the scrape endpoint
+                $.post("/Image/Scrape", { targetUrl: url }, function (data) {
+                    // Display images in the carousel
+                    const carousel = $("#carousel").empty();
+                    if (data.images && data.images.length > 0) {
+                        data.images.forEach(img => {
+                            $("<div>").append($("<img>").attr("src", img).css({ width: "100%" })).appendTo(carousel);
+                        });
+
+                        // Initialize Slick Carousel
+                        carousel.slick({
+                            dots: true,
+                            infinite: true,
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            autoplay: true,
+                            autoplaySpeed: 2000,
+                        });
+                    } else {
+                        carousel.html("<p>No images found at the provided URL.</p>");
+                    }
+
+                    // Display word frequencies in the chart
+                    const ctx = document.getElementById("wordChart").getContext("2d");
+                    new Chart(ctx, {
+                        type: "bar",
+                        data: {
+                            labels: data.wordFrequencies.map(w => w.Word),
+                            datasets: [{
+                                label: "Word Frequency",
+                                data: data.wordFrequencies.map(w => w.Count),
+                                backgroundColor: "rgba(75, 192, 192, 0.2)",
+                                borderColor: "rgba(75, 192, 192, 1)",
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: { beginAtZero: true }
+                            }
+                        }
+                    });
+                }).fail(function () {
+                    alert("Failed to scrape the URL. Please check and try again.");
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
