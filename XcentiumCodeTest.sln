@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XcentiumCodeTest", "XcentiumCodeTest\XcentiumCodeTest.csproj", "{A6F1104F-1516-4DF4-9092-7D651B94C73B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XcentiumCodeTest", "XcentiumCodeTest\XcentiumCodeTest.csproj", "{A6F1104F-1516-4DF4-9092-7D651B94C73B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MicrosoftProblems", "..\MicrosoftProblems\MicrosoftProblems\MicrosoftProblems.csproj", "{789CB94B-9B1B-4317-AF60-A688238700F6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminPage", "..\MicrosoftProblems\AdminPage\AdminPage.csproj", "{07538228-8383-48B8-A8F8-534CF9EE9708}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A6F1104F-1516-4DF4-9092-7D651B94C73B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F1104F-1516-4DF4-9092-7D651B94C73B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6F1104F-1516-4DF4-9092-7D651B94C73B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{789CB94B-9B1B-4317-AF60-A688238700F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{789CB94B-9B1B-4317-AF60-A688238700F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{789CB94B-9B1B-4317-AF60-A688238700F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{789CB94B-9B1B-4317-AF60-A688238700F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07538228-8383-48B8-A8F8-534CF9EE9708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07538228-8383-48B8-A8F8-534CF9EE9708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07538228-8383-48B8-A8F8-534CF9EE9708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07538228-8383-48B8-A8F8-534CF9EE9708}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
